@@ -1,0 +1,90 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>platform</artifactId>
+        <groupId>com.cdialogues.platform</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>system-monitoring</artifactId>
+    <packaging>war</packaging>
+    <name>system-monitoring Maven Webapp</name>
+    <url>http://www.cdialogues.com</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jolokia</groupId>
+            <artifactId>jolokia-war</artifactId>
+            <type>war</type>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jolokia</groupId>
+            <artifactId>jolokia-client-java</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jolokia</groupId>
+            <artifactId>jolokia-client-javascript</artifactId>
+            <type>javascript</type>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <sonar.language>js</sonar.language>
+        <sonar.dynamicAnalysis>false</sonar.dynamicAnalysis>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.devspan.mojo.javascript</groupId>
+                <artifactId>javascript-maven-plugin</artifactId>
+                <version>0.9.3</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <useArtifactId>false</useArtifactId>
+                    <scriptClassifier>min</scriptClassifier>
+                    <compressor>jsmin</compressor>
+                    <skipStats>false</skipStats>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>war-package</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <finalName>system-monitoring</finalName>
+    </build>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>sonatype-oss</id>
+            <url>http://oss.sonatype.org/content/groups/public</url>
+            <snapshots><enabled>false</enabled></snapshots>
+            <releases><enabled>true</enabled></releases>
+        </pluginRepository>
+    </pluginRepositories>
+</project>

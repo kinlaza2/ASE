@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: nikos
+Build-Jdk: 1.6.0_30
+BUILD_TAG: 
+GIT_COMMIT: 
+timestamp: 20120226-0431
+version: 1.0.0-SNAPSHOT
+
